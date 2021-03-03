@@ -5,10 +5,11 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Own stuff
+/out/
 *.project
 *.classpath
 *.settings
-out/
 swagger.json
 *.iml
 *.idea
