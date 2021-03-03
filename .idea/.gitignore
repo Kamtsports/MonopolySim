@@ -1,8 +1,16 @@
 # Default ignored files
 /shelf/
-/workspace.xml
 # Datasource local storage ignored files
 /../../../../../:\dev\IntelliJ IDEA\MonopolySim\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+*.project
+*.classpath
+*.settings
+out/
+swagger.json
+*.iml
+*.idea
+*.releaseBackup
+*.vscode
