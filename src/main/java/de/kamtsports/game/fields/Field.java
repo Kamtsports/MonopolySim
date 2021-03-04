@@ -7,46 +7,41 @@ import de.kamtsports.game.players.Player;
 
 public abstract class Field {
 
-    private int housesBuildOn;
+
     private Buildstatus buildstatus;
     private Sellstatus sellstatus;
     private boolean mortgaged;
     private Player owner;
 
 
-
-
-
-    public void addHouse() {
-        housesBuildOn++;
+    public Field(Buildstatus buildstatus, Sellstatus sellstatus) {
+        this.buildstatus = buildstatus;
+        this.sellstatus = sellstatus;
     }
 
-    public void removeHouse() {
-        housesBuildOn--;
-    }
 
-    public void mortgage() {
-        this.mortgaged = true;
-    }
 
-    public void unmortgage() {
-        this.mortgaged = false;
-    }
 
     public boolean isMortgaged() {
         return mortgaged;
     }
 
-    public int getHousesBuildOn() {
-        return housesBuildOn;
-    }
+    public abstract int getMortgageValue();
 
     public Buildstatus getBuildstatus() {
         return buildstatus;
     }
 
+    public void setBuildstatus(Buildstatus buildstatus) {
+        this.buildstatus = buildstatus;
+    }
+
     public Sellstatus getSellstatus() {
         return sellstatus;
+    }
+
+    public void setSellstatus(Sellstatus sellstatus) {
+        this.sellstatus = sellstatus;
     }
 
     public Player getOwner() {

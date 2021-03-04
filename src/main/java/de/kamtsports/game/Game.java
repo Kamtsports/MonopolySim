@@ -11,17 +11,17 @@ import java.util.List;
 
 public class Game {
 
-    final List<Player> players = new ArrayList<>();
-    final List<Field> fields;
+    private final List<Player> players = new ArrayList<>();
+    private final List<Field> fields;
     public VisualSolution visualSolution;
     public final Rules rules;
 
 
-    public Game(VisualSolution visualSolution) {
+    private Game(VisualSolution visualSolution) {
         rules = new Rules();
         fields = generateFields();
     }
-    public Game() {
+    private Game() {
         this(new None());
     }
 
@@ -32,13 +32,12 @@ public class Game {
 
 
 
+
     private List<Field> generateFields() {
         List<Field> fields = new ArrayList<>();
 
 
         return fields;
     }
-
-
 
 }
