@@ -1,8 +1,8 @@
 package de.kamtsports.game.fields;
 
+import de.kamtsports.game.players.Player;
 import de.kamtsports.game.fields.fieldStatus.Buildstatus;
 import de.kamtsports.game.fields.fieldStatus.Sellstatus;
-import de.kamtsports.game.players.Player;
 
 
 public abstract class Field {

@@ -28,7 +28,7 @@ public abstract class Player {
     private void updatePossibleActionsUponArrival(Field field) {
         if (field.getSellstatus() == Sellstatus.UNSOLD){
             possibleActions.add(new Buy(this,field));
-            if (game.rules.RequireAuction){
+            if (game.rules.isRequireAuction()){
                 possibleActions.add(new Auction(field));
             }
         }
