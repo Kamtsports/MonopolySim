@@ -1,7 +1,7 @@
 package de.kamtsports.game.board;
 
-import de.kamtsports.game.board.fieldActions.behaviors.Buildstatus;
-import de.kamtsports.game.board.fieldActions.behaviors.Sellstatus;
+import de.kamtsports.game.board.fieldStatus.Buildstatus;
+import de.kamtsports.game.board.fieldStatus.Sellstatus;
 import de.kamtsports.game.players.Player;
 
 

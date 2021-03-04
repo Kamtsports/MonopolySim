@@ -2,7 +2,7 @@ package de.kamtsports.game.players;
 
 import de.kamtsports.game.Game;
 import de.kamtsports.game.board.Field;
-import de.kamtsports.game.board.fieldActions.behaviors.Sellstatus;
+import de.kamtsports.game.board.fieldStatus.Sellstatus;
 import de.kamtsports.game.players.Actions.Action;
 import de.kamtsports.game.players.Actions.Auction;
 import de.kamtsports.game.players.Actions.Buy;

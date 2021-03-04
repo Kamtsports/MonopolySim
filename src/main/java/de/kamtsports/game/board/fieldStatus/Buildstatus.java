@@ -1,4 +1,4 @@
-package de.kamtsports.game.board.fieldActions.behaviors;
+package de.kamtsports.game.board.fieldStatus;
 
 public enum Buildstatus {
 
