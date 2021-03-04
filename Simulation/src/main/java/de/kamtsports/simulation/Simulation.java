@@ -1,3 +1,5 @@
+package de.kamtsports.simulation;
+
 import de.kamtsports.game.Game;
 
 import java.util.ArrayList;
