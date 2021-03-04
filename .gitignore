@@ -6,7 +6,6 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 # Own stuff
-/out/
 *.project
 *.classpath
 *.settings
@@ -15,3 +14,4 @@ swagger.json
 *.idea
 *.releaseBackup
 *.vscode
+/target/
