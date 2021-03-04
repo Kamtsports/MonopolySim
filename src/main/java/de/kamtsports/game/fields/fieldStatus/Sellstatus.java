@@ -1,4 +1,4 @@
-package de.kamtsports.game.board.fieldStatus;
+package de.kamtsports.game.fields.fieldStatus;
 
 public enum Sellstatus {
     UNSOLD,

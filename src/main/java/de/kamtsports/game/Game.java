@@ -1,7 +1,7 @@
 package de.kamtsports.game;
 
 import de.kamtsports.game.Rules.Rules;
-import de.kamtsports.game.board.Field;
+import de.kamtsports.game.fields.Field;
 import de.kamtsports.game.players.Player;
 import de.kamtsports.visuals.None;
 import de.kamtsports.visuals.VisualSolution;

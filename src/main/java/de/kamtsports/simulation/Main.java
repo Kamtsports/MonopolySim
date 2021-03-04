@@ -1,6 +1,6 @@
 package de.kamtsports.simulation;
 
-import de.kamtsports.game.board.Street;
+import de.kamtsports.game.fields.Street;
 import de.kamtsports.simulation.logic.Simulation;
 
 public class Main {

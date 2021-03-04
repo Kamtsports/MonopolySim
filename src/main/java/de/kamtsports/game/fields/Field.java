@@ -1,7 +1,7 @@
-package de.kamtsports.game.board;
+package de.kamtsports.game.fields;
 
-import de.kamtsports.game.board.fieldStatus.Buildstatus;
-import de.kamtsports.game.board.fieldStatus.Sellstatus;
+import de.kamtsports.game.fields.fieldStatus.Buildstatus;
+import de.kamtsports.game.fields.fieldStatus.Sellstatus;
 import de.kamtsports.game.players.Player;
 
 

@@ -1,4 +1,4 @@
-package de.kamtsports.game.board;
+package de.kamtsports.game.fields;
 
 public class SpecialField extends Field{
 
