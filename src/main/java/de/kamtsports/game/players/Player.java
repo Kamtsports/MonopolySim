@@ -34,9 +34,16 @@ public abstract class Player {
         }
     }
 
+
+
+
+
+
+
+
     private void doAction(Action action) {
         action.doAction();
-        game.visualSolution.displayAction();
+        game.visualSolution.displayAction(action);
     }
 
 }

@@ -8,5 +8,5 @@ public interface VisualSolution {
 
     void displayPossibleActions(List<Action> possibleActions);
 
-    void displayAction();
+    void displayAction(Action action);
 }
