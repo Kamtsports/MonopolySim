@@ -4,7 +4,7 @@ import de.kamtsports.game.players.Actions.Action;
 
 import java.util.List;
 
-public class None extends VisualSolution{
+public class None implements VisualSolution {
 
 
 
