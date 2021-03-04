@@ -40,4 +40,11 @@ public class Game {
         return fields;
     }
 
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public List<Field> getFields() {
+        return fields;
+    }
 }
