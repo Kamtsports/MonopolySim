@@ -14,4 +14,4 @@ swagger.json
 *.idea
 *.releaseBackup
 *.vscode
-/target/
+target/
