@@ -46,4 +46,11 @@ public abstract class Player {
         game.rules.getVisualSolution().displayAction(action);
     }
 
+    public Field getStandingOn() {
+        return standingOn;
+    }
+
+    public Game getGame() {
+        return game;
+    }
 }
