@@ -12,15 +12,15 @@ public class Console implements VisualSolution{
 
     @Override
     public Rules configureRules() {
-        Rules rules = new Rules();
+        Rules rules = new Rules(this);
         boolean valid = false;
-        while (!valid){
+        do {
             try {
                 System.out.println("Should auctions be required?");
                 rules.setRequireAuction(Boolean.parseBoolean(scanner.next()));
                 valid = true;
             } catch (Exception ignored){}
-        }
+        }while (!valid);
 
         return rules;
     }

@@ -8,24 +8,31 @@ public class Rules {
     private VisualSolution visualSolution;
     private Ruletype type;
 
-    public Rules() {
+    public Rules(VisualSolution visualSolution) {
+        this.visualSolution = visualSolution;
     }
 
     public static Rules generateRules(Ruletype type,VisualSolution visualSolution) {
         Rules rules;
         if (type == Ruletype.DEFAULT) {
-            rules = new Rules();
-            rules.visualSolution = visualSolution;
+            rules = new Rules(visualSolution);
             rules.requireAuction = false;
         } else {
             rules = visualSolution.configureRules();
         }
+        rules.type = type;
         return rules;
     }
 
 
+
+
     public VisualSolution getVisualSolution() {
         return visualSolution;
+    }
+
+    public void setVisualSolution(VisualSolution visualSolution) {
+        this.visualSolution = visualSolution;
     }
 
     public void setRequireAuction(boolean requireAuction) {
