@@ -22,7 +22,7 @@ public abstract class Player {
 
     public void stepOn(Field field) {
         updatePossibleActionsUponArrival(field);
-        game.visualSolution.displayPossibleActions(possibleActions);
+        game.rules.getVisualSolution().displayPossibleActions(possibleActions);
     }
 
     private void updatePossibleActionsUponArrival(Field field) {
@@ -43,7 +43,7 @@ public abstract class Player {
 
     private void doAction(Action action) {
         action.doAction();
-        game.visualSolution.displayAction(action);
+        game.rules.getVisualSolution().displayAction(action);
     }
 
 }

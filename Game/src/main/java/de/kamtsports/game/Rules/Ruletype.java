@@ -1,6 +1,8 @@
 package de.kamtsports.game.Rules;
 
-public enum Rulesets {
+
+public enum Ruletype {
     DEFAULT,
     CUSTOM
+
 }

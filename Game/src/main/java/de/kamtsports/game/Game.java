@@ -3,9 +3,10 @@ package de.kamtsports.game;
 import de.kamtsports.game.Rules.Rules;
 import de.kamtsports.game.fields.Field;
 import de.kamtsports.game.players.Player;
+import de.kamtsports.visuals.Console;
 import de.kamtsports.visuals.None;
 import de.kamtsports.visuals.VisualSolution;
-import de.kamtsports.game.Rules.Rulesets;
+import de.kamtsports.game.Rules.Ruletype;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,21 +15,22 @@ public class Game extends Thread{
 
     private final List<Player> players = new ArrayList<>();
     private final List<Field> fields;
-    public VisualSolution visualSolution;
     public final Rules rules;
 
 
-    private Game(VisualSolution visualSolution, Rulesets ruleset) {
-        rules = Rules.generateRules(ruleset);
+    private Game(Rules rules) {
+        this.rules = rules;
         fields = generateFields();
     }
-    private Game() {
-        this(new None(),Rulesets.DEFAULT);
+
+    public static Game generateNewGame(Ruletype ruletype, VisualSolution visualSolution){
+        return new Game(Rules.generateRules(ruletype,visualSolution));
     }
 
     public static Game generateNewGame(){
-        return new Game();
+        return generateNewGame(Ruletype.DEFAULT, new Console());
     }
+
 
 
 
