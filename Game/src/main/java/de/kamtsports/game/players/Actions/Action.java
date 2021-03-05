@@ -1,31 +1,26 @@
 package de.kamtsports.game.players.Actions;
 
-import de.kamtsports.game.Game;
 import de.kamtsports.game.fields.Field;
 import de.kamtsports.game.players.Player;
 
 
 public abstract class Action {
 
-    protected Player actor;
-    protected Field field;
-    protected Game game;
+    final protected Player actor;
+    final protected Field field;
 
-    public Action(Player actor, Field field, Game game) {
+
+    public Action(Player actor, Field field) {
         this.actor = actor;
         this.field = field;
     }
 
-    public Action(Player actor, Field field) {
-       this(actor,field,actor.getGame());
-    }
-
     public Action(Player actor) {
-        this(actor,null,actor.getGame());
+        this(actor,null);
     }
 
     public Action(Field field) {
-        this(null,field,field.getGame());
+        this(null,field);
     }
 
 

@@ -1,33 +1,45 @@
 package de.kamtsports.game;
 
-import de.kamtsports.game.Rules.Rules;
-import de.kamtsports.game.Rules.Ruletype;
+import de.kamtsports.game.Settings.Settings;
+import de.kamtsports.game.Settings.SettingType;
 import de.kamtsports.game.fields.Field;
 import de.kamtsports.game.players.Player;
 import de.kamtsports.visuals.Console;
 import de.kamtsports.visuals.VisualSolution;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Game extends Thread {
+public class Game {
 
     private final List<Player> players = new ArrayList<>();
     private final List<Field> fields;
-    public final Rules rules;
+    public static Settings settings;
+    public static Game game = null;
 
-
-    private Game(Rules rules) {
-        this.rules = rules;
+    private Game(Settings settings) {
+        Game.settings = settings;
         fields = generateFields();
+        game = this;
     }
 
-    public static Game generateNewGame(Ruletype ruletype, VisualSolution visualSolution) {
-        return new Game(Rules.generateRules(ruletype, visualSolution));
+    public static void generateNewGame(SettingType settingType, VisualSolution visualSolution) {
+        if (game == null){
+            new Game(Settings.generateRules(settingType, visualSolution));
+        }
     }
 
-    public static Game generateNewGame() {
-        return generateNewGame(Ruletype.DEFAULT, new Console());
+    public static void generateNewGame(String ... args) {
+        if (args == null){
+            generateNewGame(SettingType.DEFAULT, new Console());
+        } else {
+            try {
+                generateNewGame(SettingType.valueOf(args[0]), (VisualSolution) Class.forName(args[1]).getConstructor().newInstance());
+            } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                System.out.println("An Error has occured");
+            }
+        }
     }
 
 
@@ -44,5 +56,9 @@ public class Game extends Thread {
 
     public List<Field> getFields() {
         return fields;
+    }
+
+    public void start() {
+
     }
 }

@@ -10,14 +10,13 @@ import de.kamtsports.game.players.Actions.Buy;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public abstract class Player {
 
     protected Field standingOn;
-    protected final Game game;
     final protected List<Action> possibleActions = new ArrayList<>();
 
-    public Player(Game game) {
-        this.game = game;
+    public Player() {
     }
 
 
@@ -25,7 +24,7 @@ public abstract class Player {
     protected void updatePossibleActionsUponArrival(Field field) {
         if (field.getSellstatus() == Sellstatus.UNSOLD){
             possibleActions.add(new Buy(this,field));
-            if (game.rules.isRequireAuction()){
+            if (Game.settings.isRequireAuction()){
                 possibleActions.add(new Auction(field));
             }
         }
@@ -35,16 +34,13 @@ public abstract class Player {
 
 
 
-    private void doAction(Action action) {
+    public void doAction(Action action) {
         action.doAction();
-        game.rules.getVisualSolution().displayAction(action);
+        Game.settings.getVisualSolution().displayAction(action);
     }
 
     public Field getStandingOn() {
         return standingOn;
     }
 
-    public Game getGame() {
-        return game;
-    }
 }

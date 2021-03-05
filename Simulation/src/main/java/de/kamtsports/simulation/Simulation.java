@@ -1,26 +1,18 @@
 package de.kamtsports.simulation;
 
-import de.kamtsports.game.Game;
+import de.kamtsports.game.Main;
 
-import java.util.ArrayList;
-import java.util.List;
+public class Simulation extends Thread {
 
-public class Simulation extends Thread{
-
-    private List<Game> games = new ArrayList<>();
 
     private Simulation(int amountOfGames) {
-        while (games.size()<amountOfGames){
-            games.add(Game.generateNewGame());
+        for (int i = 0; i < amountOfGames; i++) {
+            Main.main(null);
         }
     }
 
-    public static Simulation setup(int amountOfGames){
+    public static Simulation setup(int amountOfGames) {
         return new Simulation(amountOfGames);
     }
 
-    @Override
-    public void start() {
-
-    }
 }
