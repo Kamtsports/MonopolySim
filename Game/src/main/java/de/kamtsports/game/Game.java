@@ -4,6 +4,7 @@ import de.kamtsports.game.Settings.Settings;
 import de.kamtsports.game.Settings.SettingType;
 import de.kamtsports.game.fields.Field;
 import de.kamtsports.game.players.Player;
+import de.kamtsports.helper.ClassHelper;
 import de.kamtsports.visuals.Console;
 import de.kamtsports.visuals.VisualSolution;
 
@@ -30,17 +31,20 @@ public class Game {
         }
     }
 
-    public static void generateNewGame(String ... args) {
-        if (args == null){
+    public static void generateNewGame(String ... uiName) {
+        if (uiName == null){
             generateNewGame(SettingType.DEFAULT, new Console());
         } else {
+            String packageName = "de.kamtsports.visual";
             try {
-                generateNewGame(SettingType.valueOf(args[0]), (VisualSolution) Class.forName(args[1]).getConstructor().newInstance());
+                generateNewGame(SettingType.DEFAULT,(VisualSolution) Class.forName(packageName + uiName[0]).getConstructor().newInstance());
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                System.out.println("An Error has occured");
+                System.out.println(ClassHelper.getListOfClassesInPackage(packageName));
             }
         }
     }
+
+
 
 
     private List<Field> generateFields() {
