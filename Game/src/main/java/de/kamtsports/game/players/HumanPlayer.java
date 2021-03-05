@@ -1,6 +1,7 @@
 package de.kamtsports.game.players;
 
 import de.kamtsports.game.Game;
+import de.kamtsports.game.fields.Field;
 import de.kamtsports.game.objects.Dice;
 
 import java.util.ArrayList;
@@ -18,18 +19,16 @@ public class HumanPlayer extends Player {
         dices.add(new Dice());
     }
 
-    public void rollDice(){
-        int diceRoll = 0;
-        for (Dice dice : dices){
-            diceRoll += dice.roll();
-        }
-        int indexOfField = getGame().getFields().indexOf(getStandingOn());
-        for (int i = 0; i < diceRoll; i++) {
-            indexOfField++;
-            if (indexOfField==getGame().getFields().size()){
-                indexOfField = 0;
-            }
-        }
-        stepOn(getGame().getFields().get(indexOfField));
+    public void stepOn(Field field) {
+        updatePossibleActionsUponArrival(field);
+        game.rules.getVisualSolution().displayPossibleActions(possibleActions);
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public List<Dice> getDices() {
+        return dices;
     }
 }

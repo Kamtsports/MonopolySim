@@ -12,20 +12,17 @@ import java.util.List;
 
 public abstract class Player {
 
-    private Field standingOn;
-    private final Game game;
-    final private List<Action> possibleActions = new ArrayList<>();
+    protected Field standingOn;
+    protected final Game game;
+    final protected List<Action> possibleActions = new ArrayList<>();
 
     public Player(Game game) {
         this.game = game;
     }
 
-    public void stepOn(Field field) {
-        updatePossibleActionsUponArrival(field);
-        game.rules.getVisualSolution().displayPossibleActions(possibleActions);
-    }
 
-    private void updatePossibleActionsUponArrival(Field field) {
+
+    protected void updatePossibleActionsUponArrival(Field field) {
         if (field.getSellstatus() == Sellstatus.UNSOLD){
             possibleActions.add(new Buy(this,field));
             if (game.rules.isRequireAuction()){
@@ -33,9 +30,6 @@ public abstract class Player {
             }
         }
     }
-
-
-
 
 
 

@@ -1,5 +1,6 @@
 package de.kamtsports.game.fields;
 
+import de.kamtsports.game.Game;
 import de.kamtsports.game.players.Player;
 import de.kamtsports.game.fields.fieldStatus.Buildstatus;
 import de.kamtsports.game.fields.fieldStatus.Sellstatus;
@@ -12,6 +13,7 @@ public abstract class Field {
     private Sellstatus sellstatus;
     private boolean mortgaged;
     private Player owner;
+    private Game game;
 
 
     public Field(Buildstatus buildstatus, Sellstatus sellstatus) {
@@ -42,6 +44,10 @@ public abstract class Field {
 
     public void setSellstatus(Sellstatus sellstatus) {
         this.sellstatus = sellstatus;
+    }
+
+    public Game getGame() {
+        return game;
     }
 
     public Player getOwner() {
