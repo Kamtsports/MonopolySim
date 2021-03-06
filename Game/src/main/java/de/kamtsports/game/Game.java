@@ -39,6 +39,7 @@ public class Game {
             try {
                 generateNewGame(SettingType.DEFAULT,(VisualSolution) Class.forName(packageName + uiName[0]).getConstructor().newInstance());
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                //TODO filter Interface
                 System.out.println("Uitype must be one of the following: "  + ClassHelper.getListOfClassesInPackage(packageName));
             }
         }
@@ -50,7 +51,7 @@ public class Game {
     private List<Field> generateFields() {
         List<Field> fields = new ArrayList<>();
 
-
+        //TODO field generation
         return fields;
     }
 
