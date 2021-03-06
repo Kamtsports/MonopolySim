@@ -1,7 +1,7 @@
 package de.kamtsports.game;
 
-import de.kamtsports.game.Settings.Settings;
 import de.kamtsports.game.Settings.SettingType;
+import de.kamtsports.game.Settings.Settings;
 import de.kamtsports.game.fields.Field;
 import de.kamtsports.game.players.Player;
 import de.kamtsports.helper.ClassHelper;
@@ -32,14 +32,14 @@ public class Game {
     }
 
     public static void generateNewGame(String ... uiName) {
-        if (uiName == null){
+        String packageName = "de.kamtsports.visual";
+        if (uiName.length == 0){
             generateNewGame(SettingType.DEFAULT, new Console());
         } else {
-            String packageName = "de.kamtsports.visual";
             try {
                 generateNewGame(SettingType.DEFAULT,(VisualSolution) Class.forName(packageName + uiName[0]).getConstructor().newInstance());
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                System.out.println(ClassHelper.getListOfClassesInPackage(packageName));
+                System.out.println("Uitype must be one of the following: "  + ClassHelper.getListOfClassesInPackage(packageName));
             }
         }
     }
