@@ -32,15 +32,20 @@ public class Game {
     }
 
     public static void generateNewGame(String ... uiName) {
-        String packageName = "de.kamtsports.visual";
+        String packageName = "de.kamtsports.visuals";
         if (uiName.length == 0){
             generateNewGame(SettingType.DEFAULT, new Console());
         } else {
             try {
                 generateNewGame(SettingType.DEFAULT,(VisualSolution) Class.forName(packageName + uiName[0]).getConstructor().newInstance());
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                //TODO filter Interface
-                System.out.println("Uitype must be one of the following: "  + ClassHelper.getListOfClassesInPackage(packageName));
+                List<String> classesInPackage = ClassHelper.getListOfClassesInPackage(packageName);
+                System.out.print("Uitype must be one of the following: ");
+                for (String s : classesInPackage){
+                    if (s.equals("VisualSolution")) continue;
+                    System.out.print(s + " ");
+                }
+                System.out.println();
             }
         }
     }
