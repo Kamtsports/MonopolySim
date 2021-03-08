@@ -8,6 +8,9 @@ public class None implements VisualSolution {
 
 
 
+    @Override
+    public void configureRules() {
+    }
 
     @Override
     public void displayPossibleActions(List<Action> possibleActions) {

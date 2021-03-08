@@ -6,6 +6,9 @@ import java.util.List;
 
 public interface VisualSolution {
 
+
+    void configureRules();
+
     void displayPossibleActions(List<Action> possibleActions);
 
     void displayAction(Action action);
