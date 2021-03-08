@@ -2,7 +2,8 @@ package de.kamtsports.game;
 
 import de.kamtsports.game.Settings.SettingType;
 import de.kamtsports.game.Settings.Settings;
-import de.kamtsports.game.fields.Field;
+import de.kamtsports.game.board.gameBoards.GameBoard;
+import de.kamtsports.game.board.gameBoards.StandardBoard;
 import de.kamtsports.game.players.Player;
 import de.kamtsports.helper.ClassHelper;
 import de.kamtsports.visuals.Console;
@@ -15,29 +16,29 @@ import java.util.List;
 public class Game {
 
     private final List<Player> players = new ArrayList<>();
-    private final List<Field> fields;
     public static Settings settings;
     public static Game game = null;
+    public final GameBoard gameBoard;
 
-    private Game(Settings settings) {
+    private Game(Settings settings, GameBoard gameBoard) {
         Game.settings = settings;
-        fields = generateFields();
+        this.gameBoard = gameBoard;
         game = this;
     }
 
-    public static void generateNewGame(SettingType settingType, VisualSolution visualSolution) {
+    public static void generateNewGame(SettingType settingType, VisualSolution visualSolution,GameBoard gameBoard) {
         if (game == null){
-            new Game(Settings.generateRules(settingType, visualSolution));
+            new Game(Settings.generateSettings(settingType, visualSolution),gameBoard);
         }
     }
 
     public static void generateNewGame(String ... uiName) {
         String packageName = "de.kamtsports.visuals";
         if (uiName.length == 0){
-            generateNewGame(SettingType.DEFAULT, new Console());
+            generateNewGame(SettingType.DEFAULT, new Console(),new StandardBoard());
         } else {
             try {
-                generateNewGame(SettingType.DEFAULT,(VisualSolution) Class.forName(packageName + uiName[0]).getConstructor().newInstance());
+                generateNewGame(SettingType.DEFAULT,(VisualSolution) Class.forName(packageName + uiName[0]).getConstructor().newInstance(),new StandardBoard());
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 List<String> classesInPackage = ClassHelper.getListOfClassesInPackage(packageName);
                 System.out.print("Uitype must be one of the following: ");
@@ -51,21 +52,8 @@ public class Game {
     }
 
 
-
-
-    private List<Field> generateFields() {
-        List<Field> fields = new ArrayList<>();
-
-        //TODO field generation
-        return fields;
-    }
-
     public List<Player> getPlayers() {
         return players;
-    }
-
-    public List<Field> getFields() {
-        return fields;
     }
 
     public void start() {

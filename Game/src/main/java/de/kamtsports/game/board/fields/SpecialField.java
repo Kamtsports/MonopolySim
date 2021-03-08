@@ -1,7 +1,7 @@
-package de.kamtsports.game.fields;
+package de.kamtsports.game.board.fields;
 
-import de.kamtsports.game.fields.fieldStatus.Buildstatus;
-import de.kamtsports.game.fields.fieldStatus.Sellstatus;
+import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
+import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ public class SpecialField extends Field {
     private final List<Street> upgradeGroup = new ArrayList<>();
 
 
-    public SpecialField(Sellstatus sellstatus,int buyPrice) {
-        super(Buildstatus.IMPOSSIBLE, sellstatus);
+    public SpecialField(String name,Sellstatus sellstatus,int buyPrice) {
+        super(name,Buildstatus.IMPOSSIBLE, sellstatus);
         this.buyPrice = sellstatus == Sellstatus.UNSOLD ? buyPrice : 0;
     }
 

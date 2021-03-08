@@ -1,7 +1,7 @@
 package de.kamtsports.game.players.Actions;
 
 import de.kamtsports.game.Game;
-import de.kamtsports.game.fields.Field;
+import de.kamtsports.game.board.fields.Field;
 import de.kamtsports.game.objects.Dice;
 import de.kamtsports.game.players.HumanPlayer;
 
@@ -16,13 +16,13 @@ public class RollDice extends Action {
     @Override
     public void doAction() {
         HumanPlayer actor = (HumanPlayer) this.actor;
-        int indexOfField = Game.game.getFields().indexOf(actor.getStandingOn());
+        int indexOfField = Game.game.gameBoard.getFields().indexOf(actor.getStandingOn());
         Dice.roll(Game.settings.getDiceAmount());
 
         for (Integer integer : Dice.getLastRolls()) {
                 indexOfField += integer;
-                if (indexOfField >= Game.game.getFields().size()-1) {
-                    indexOfField = indexOfField - Game.game.getFields().size();
+                if (indexOfField >= Game.game.gameBoard.getFields().size()-1) {
+                    indexOfField = indexOfField - Game.game.gameBoard.getFields().size();
                 }
         }
 
@@ -30,11 +30,11 @@ public class RollDice extends Action {
             if (doublesInRow == 3) {
                 actor.doAction(new Jail(actor));
             } else {
-                actor.stepOn(Game.game.getFields().get(indexOfField));
+                actor.stepOn(Game.game.gameBoard.getFields().get(indexOfField));
                 doAction();
             }
         } else {
-            actor.stepOn(Game.game.getFields().get(indexOfField));
+            actor.stepOn(Game.game.gameBoard.getFields().get(indexOfField));
         }
     }
 

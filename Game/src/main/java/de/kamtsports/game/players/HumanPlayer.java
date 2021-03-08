@@ -1,7 +1,7 @@
 package de.kamtsports.game.players;
 
 import de.kamtsports.game.Game;
-import de.kamtsports.game.fields.Field;
+import de.kamtsports.game.board.fields.Field;
 
 public class HumanPlayer extends Player {
 

@@ -1,7 +1,7 @@
-package de.kamtsports.game.fields;
+package de.kamtsports.game.board.fields;
 
-import de.kamtsports.game.fields.fieldStatus.Buildstatus;
-import de.kamtsports.game.fields.fieldStatus.Sellstatus;
+import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
+import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ public class TrainStation extends Field {
     private final int buyPrice;
     private final List<Street> upgradeGroup = new ArrayList<>();
 
-    public TrainStation(int buyPrice) {
-        super(Buildstatus.IMPOSSIBLE, Sellstatus.UNSOLD);
+    public TrainStation(String name, int buyPrice) {
+        super(name,Buildstatus.IMPOSSIBLE, Sellstatus.UNSOLD);
         this.buyPrice = buyPrice;
     }
 

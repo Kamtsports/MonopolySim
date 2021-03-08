@@ -1,20 +1,22 @@
-package de.kamtsports.game.fields;
+package de.kamtsports.game.board.fields;
 
 import de.kamtsports.game.players.Player;
-import de.kamtsports.game.fields.fieldStatus.Buildstatus;
-import de.kamtsports.game.fields.fieldStatus.Sellstatus;
+import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
+import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 
 
 public abstract class Field {
 
 
-    private Buildstatus buildstatus;
-    private Sellstatus sellstatus;
-    private boolean mortgaged;
-    private Player owner;
+    protected Buildstatus buildstatus;
+    protected Sellstatus sellstatus;
+    protected boolean mortgaged;
+    protected Player owner;
+    protected String name;
 
 
-    public Field(Buildstatus buildstatus, Sellstatus sellstatus) {
+    public Field(String name, Buildstatus buildstatus, Sellstatus sellstatus) {
+        this.name = name;
         this.buildstatus = buildstatus;
         this.sellstatus = sellstatus;
     }
