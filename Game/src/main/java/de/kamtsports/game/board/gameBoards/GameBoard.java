@@ -10,7 +10,6 @@ import java.util.List;
 
 public abstract class  GameBoard {
 
-    protected int amountOfFields;
     protected final HashMap<Color, ColorGroup> colorGroups = new HashMap<>();
     protected final List<Field> fields = new ArrayList<>();
 

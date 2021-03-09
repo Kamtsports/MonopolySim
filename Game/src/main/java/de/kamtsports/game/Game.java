@@ -26,23 +26,23 @@ public class Game {
         game = this;
     }
 
-    public static void generateNewGame(SettingType settingType, VisualSolution visualSolution,GameBoard gameBoard) {
-        if (game == null){
-            new Game(Settings.generateSettings(settingType, visualSolution),gameBoard);
+    public static void generateNewGame(SettingType settingType, VisualSolution visualSolution, GameBoard gameBoard) {
+        if (game == null) {
+            new Game(Settings.generateSettings(settingType, visualSolution), gameBoard);
         }
     }
 
-    public static void generateNewGame(String ... uiName) {
+    public static void generateNewGame(String... uiName) {
         String packageName = "de.kamtsports.visuals";
-        if (uiName.length == 0){
-            generateNewGame(SettingType.DEFAULT, new Console(),new StandardBoard());
+        if (uiName.length == 0) {
+            generateNewGame(SettingType.DEFAULT, new Console(), new StandardBoard());
         } else {
             try {
-                generateNewGame(SettingType.DEFAULT,(VisualSolution) Class.forName(packageName + uiName[0]).getConstructor().newInstance(),new StandardBoard());
+                generateNewGame(SettingType.DEFAULT, (VisualSolution) Class.forName(packageName + "." + uiName[0]).getConstructor().newInstance(), new StandardBoard());
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 List<String> classesInPackage = ClassHelper.getListOfClassesInPackage(packageName);
                 System.out.print("Uitype must be one of the following: ");
-                for (String s : classesInPackage){
+                for (String s : classesInPackage) {
                     if (s.equals("VisualSolution")) continue;
                     System.out.print(s + " ");
                 }

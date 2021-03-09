@@ -12,11 +12,11 @@ public abstract class Field {
     protected Sellstatus sellstatus;
     protected boolean mortgaged;
     protected Player owner;
-    protected String name;
+    protected int id;
 
 
-    public Field(String name, Buildstatus buildstatus, Sellstatus sellstatus) {
-        this.name = name;
+    public Field(int id, Buildstatus buildstatus, Sellstatus sellstatus) {
+        this.id = id;
         this.buildstatus = buildstatus;
         this.sellstatus = sellstatus;
     }
@@ -27,8 +27,6 @@ public abstract class Field {
     public boolean isMortgaged() {
         return mortgaged;
     }
-
-    public abstract int getMortgageValue();
 
     public Buildstatus getBuildstatus() {
         return buildstatus;

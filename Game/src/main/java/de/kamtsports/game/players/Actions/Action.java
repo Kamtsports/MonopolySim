@@ -23,6 +23,21 @@ public abstract class Action {
         this(null,field);
     }
 
+    public static Action getActionFromString(String s,Player player) {
+        Action action = null;
+        switch (s){
+            case "taxes":
+                action = new PayTaxes(player,200);
+                break;
+            case "extraTaxes":
+                action = new PayTaxes(player,100);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + s);
+        }
+        return action;
+    }
+
     //TODO implement doAction and invocation of it
     public abstract void doAction();
 

@@ -1,16 +1,13 @@
 package de.kamtsports.game.Settings;
 
-import de.kamtsports.game.board.fields.Street;
-import de.kamtsports.game.board.gameBoards.GameBoard;
-import de.kamtsports.game.board.gameBoards.StandardBoard;
-import de.kamtsports.game.objects.DiceType;
+import de.kamtsports.game.objects.DieType;
 import de.kamtsports.visuals.VisualSolution;
 
 public class Settings {
 
     private boolean requireAuction;
     private VisualSolution visualSolution;
-    private DiceType diceType;
+    private DieType dieType;
     private int diceAmount;
     private int mortageFeePercent;
 
@@ -23,15 +20,15 @@ public class Settings {
         if (type == SettingType.DEFAULT) {
             settings.requireAuction = false;
             settings.diceAmount = 2;
-            settings.diceType = DiceType.D6;
+            settings.dieType = DieType.D6;
             settings.mortageFeePercent = 10;
         }
         return settings;
     }
 
 
-    public DiceType getDiceType() {
-        return diceType;
+    public DieType getDiceType() {
+        return dieType;
     }
 
     public int getDiceAmount() {
@@ -42,8 +39,8 @@ public class Settings {
         return visualSolution;
     }
 
-    public void setDiceType(DiceType diceType) {
-        this.diceType = diceType;
+    public void setDiceType(DieType dieType) {
+        this.dieType = dieType;
     }
 
     public void setDiceAmount(int diceAmount) {

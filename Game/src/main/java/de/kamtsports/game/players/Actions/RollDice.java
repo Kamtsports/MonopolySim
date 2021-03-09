@@ -2,7 +2,7 @@ package de.kamtsports.game.players.Actions;
 
 import de.kamtsports.game.Game;
 import de.kamtsports.game.board.fields.Field;
-import de.kamtsports.game.objects.Dice;
+import de.kamtsports.game.objects.Die;
 import de.kamtsports.game.players.HumanPlayer;
 
 public class RollDice extends Action {
@@ -17,9 +17,9 @@ public class RollDice extends Action {
     public void doAction() {
         HumanPlayer actor = (HumanPlayer) this.actor;
         int indexOfField = Game.game.gameBoard.getFields().indexOf(actor.getStandingOn());
-        Dice.roll(Game.settings.getDiceAmount());
+        Die.roll(Game.settings.getDiceAmount());
 
-        for (Integer integer : Dice.getLastRolls()) {
+        for (Integer integer : Die.getLastRolls()) {
                 indexOfField += integer;
                 if (indexOfField >= Game.game.gameBoard.getFields().size()-1) {
                     indexOfField = indexOfField - Game.game.gameBoard.getFields().size();
@@ -40,8 +40,8 @@ public class RollDice extends Action {
 
     private boolean haveRolledDouble() {
         boolean gamesDouble = true;
-        Integer first = Dice.getLastRolls().get(0);
-        for (Integer other : Dice.getLastRolls()) {
+        Integer first = Die.getLastRolls().get(0);
+        for (Integer other : Die.getLastRolls()) {
             if (!other.equals(first)) {
                 gamesDouble = false;
                 break;

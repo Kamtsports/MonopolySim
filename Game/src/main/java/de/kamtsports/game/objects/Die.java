@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Dice {
+public abstract class Die {
 
     private static final List<Integer> rolls= new ArrayList<>();
 

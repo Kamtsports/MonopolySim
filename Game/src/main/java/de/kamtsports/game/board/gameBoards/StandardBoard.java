@@ -1,49 +1,31 @@
 package de.kamtsports.game.board.gameBoards;
 
 import de.kamtsports.game.board.fields.ColorGroup;
-import de.kamtsports.game.board.fields.Field;
+import de.kamtsports.helper.CSVHelper;
 import de.kamtsports.helper.ColorHelper;
-
-import java.awt.*;
-import java.util.HashMap;
-import java.util.List;
 
 public class StandardBoard extends GameBoard {
 
 
-
+    String pathToCSV = "C:\\dev\\IntelliJ IDEA\\MonopolySim\\Game\\src\\main\\resources\\StandardBoard.csv";
 
     public StandardBoard() {
-        amountOfFields = 40;
         generateColorGroups();
         generateFields();
-
+        System.out.println(getFields());
     }
 
     @Override
     protected void generateColorGroups() {
-        colorGroups.put(ColorHelper.purple, new ColorGroup(ColorHelper.purple));
-        colorGroups.put(Color.cyan, new ColorGroup(Color.cyan));
-        colorGroups.put(Color.magenta, new ColorGroup(Color.magenta));
-        colorGroups.put(ColorHelper.orange, new ColorGroup(ColorHelper.orange));
-        colorGroups.put(Color.red, new ColorGroup(Color.red));
-        colorGroups.put(Color.yellow, new ColorGroup(Color.yellow));
-        colorGroups.put(ColorHelper.darkGreen, new ColorGroup(ColorHelper.darkGreen));
-        colorGroups.put(Color.blue, new ColorGroup(Color.blue));
+        String [] colors = {"purple","cyan","magenta","orange","red","yellow","darkGreen","blue"};
+        for (String color : colors){
+            colorGroups.put(ColorHelper.getColor(color),new ColorGroup(ColorHelper.getColor(color)));
+        }
     }
 
 
     @Override
     protected void generateFields() {
-
-    }
-
-
-    public HashMap<Color, ColorGroup> getColorGroups() {
-        return colorGroups;
-    }
-
-    public List<Field> getFields() {
-        return fields;
+        CSVHelper.generateFieldsFromFile(pathToCSV);
     }
 }
