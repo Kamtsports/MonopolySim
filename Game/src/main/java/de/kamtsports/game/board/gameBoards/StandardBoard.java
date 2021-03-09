@@ -1,8 +1,9 @@
 package de.kamtsports.game.board.gameBoards;
 
-import de.kamtsports.game.board.fields.ColorGroup;
 import de.kamtsports.helper.CSVHelper;
 import de.kamtsports.helper.ColorHelper;
+
+import java.util.ArrayList;
 
 public class StandardBoard extends GameBoard {
 
@@ -11,7 +12,7 @@ public class StandardBoard extends GameBoard {
 
     public StandardBoard() {
         generateColorGroups();
-        generateFields();
+        fields = CSVHelper.generateFieldsFromFile(pathToCSV);
         System.out.println(getFields());
     }
 
@@ -19,13 +20,9 @@ public class StandardBoard extends GameBoard {
     protected void generateColorGroups() {
         String [] colors = {"purple","cyan","magenta","orange","red","yellow","darkGreen","blue"};
         for (String color : colors){
-            colorGroups.put(ColorHelper.getColor(color),new ColorGroup(ColorHelper.getColor(color)));
+            colorGroups.put(ColorHelper.getColor(color),new ArrayList<>());
         }
     }
 
 
-    @Override
-    protected void generateFields() {
-        CSVHelper.generateFieldsFromFile(pathToCSV);
-    }
 }

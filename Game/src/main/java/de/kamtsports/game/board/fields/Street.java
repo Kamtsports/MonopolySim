@@ -1,5 +1,6 @@
 package de.kamtsports.game.board.fields;
 
+import de.kamtsports.game.Game;
 import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
 import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 import de.kamtsports.helper.ColorHelper;
@@ -20,6 +21,7 @@ public class Street extends Mortageable {
         this.color = ColorHelper.getColor(color);
         this.rents = rents;
         this.housePrice = housePrice;
+        Game.game.gameBoard.addToColorGroup(this.color,this);
     }
 
     public int getRent() {
