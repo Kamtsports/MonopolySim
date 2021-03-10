@@ -13,7 +13,7 @@ public abstract class Die {
     public static void roll(int amount){
         rolls.clear();
         for (int i = 0; i <amount ; i++) {
-            rolls.add(ThreadLocalRandom.current().nextInt(Game.settings.getDiceType().min, Game.settings.getDiceType().max+1));
+            rolls.add(ThreadLocalRandom.current().nextInt(Game.settings.getDieType().min, Game.settings.getDieType().max+1));
         }
     }
 

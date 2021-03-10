@@ -1,54 +1,44 @@
 package de.kamtsports.game.board.fields;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import de.kamtsports.game.players.Player;
 import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
 import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
+import lombok.Getter;
+import lombok.Setter;
 
-
+import static com.fasterxml.jackson.annotation.JsonSubTypes.*;
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type")
+@JsonSubTypes({
+        @Type(value = Mortgageable.class, name = "street"),
+        @Type(value = Mortgageable.class, name = "trainStation"),
+        @Type(value = Mortgageable.class, name = "specialStation"),
+        @Type(value = Corner.class, name = "corner"),
+        @Type(value = ActionField.class, name = "action"),
+        @Type(value = CardField.class, name = "event"),
+        @Type(value = CardField.class, name = "community")
+})
+@Getter
 public abstract class Field {
 
 
+    @Setter
     protected Buildstatus buildstatus;
+    @Setter
     protected Sellstatus sellstatus;
-    protected boolean mortgaged;
+    @Setter
     protected Player owner;
-    protected int id;
-
+    protected boolean mortgaged;
+    protected final int id;
 
     public Field(int id, Buildstatus buildstatus, Sellstatus sellstatus) {
+        System.out.println("field");
         this.id = id;
         this.buildstatus = buildstatus;
         this.sellstatus = sellstatus;
     }
 
-
-
-
-    public boolean isMortgaged() {
-        return mortgaged;
-    }
-
-    public Buildstatus getBuildstatus() {
-        return buildstatus;
-    }
-
-    public void setBuildstatus(Buildstatus buildstatus) {
-        this.buildstatus = buildstatus;
-    }
-
-    public Sellstatus getSellstatus() {
-        return sellstatus;
-    }
-
-    public void setSellstatus(Sellstatus sellstatus) {
-        this.sellstatus = sellstatus;
-    }
-
-    public Player getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Player owner) {
-        this.owner = owner;
-    }
 }

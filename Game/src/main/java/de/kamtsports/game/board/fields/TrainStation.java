@@ -1,29 +1,28 @@
 package de.kamtsports.game.board.fields;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
 import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TrainStation extends Mortageable {
+public class TrainStation extends Mortgageable {
 
 
     private final List<TrainStation> upgradeGroup = new ArrayList<>();
     private final List<Integer> rents;
 
-
-    public TrainStation(int name, int buyPrice,List<Integer> rents ,int mortgage) {
+    @JsonCreator
+    public TrainStation(@JsonProperty int name,@JsonProperty int buyPrice,@JsonProperty List<Integer> rents ,@JsonProperty int mortgage) {
         super(name,Buildstatus.IMPOSSIBLE, Sellstatus.UNSOLD,buyPrice,mortgage);
         this.rents = rents;
+        upgradeGroup.add(this);
     }
 
 
 
-
-    public int getRents() {
-        return rents.get(getAmountOwnedInGroup());
-    }
 
 
     private int getAmountOwnedInGroup(){
@@ -34,6 +33,10 @@ public class TrainStation extends Mortageable {
             }
         }
         return amount;
+    }
+
+    public int getRent() {
+        return rents.get(getAmountOwnedInGroup());
     }
 
     public int getBuyPrice() {

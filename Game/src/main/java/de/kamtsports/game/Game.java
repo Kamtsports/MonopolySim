@@ -3,7 +3,6 @@ package de.kamtsports.game;
 import de.kamtsports.game.Settings.SettingType;
 import de.kamtsports.game.Settings.Settings;
 import de.kamtsports.game.board.gameBoards.GameBoard;
-import de.kamtsports.game.board.gameBoards.StandardBoard;
 import de.kamtsports.game.players.Player;
 import de.kamtsports.helper.ClassHelper;
 import de.kamtsports.visuals.Console;
@@ -15,6 +14,7 @@ import java.util.List;
 
 public class Game {
 
+    @lombok.Getter
     private final List<Player> players = new ArrayList<>();
     public static Settings settings;
     public static Game game = null;
@@ -35,10 +35,10 @@ public class Game {
     public static void generateNewGame(String... uiName) {
         String packageName = "de.kamtsports.visuals";
         if (uiName.length == 0) {
-            generateNewGame(SettingType.DEFAULT, new Console(), new StandardBoard());
+            generateNewGame(SettingType.DEFAULT, new Console(), new GameBoard());
         } else {
             try {
-                generateNewGame(SettingType.DEFAULT, (VisualSolution) Class.forName(packageName + "." + uiName[0]).getConstructor().newInstance(), new StandardBoard());
+                generateNewGame(SettingType.DEFAULT, (VisualSolution) Class.forName(packageName + "." + uiName[0]).getConstructor().newInstance(), new GameBoard());
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 List<String> classesInPackage = ClassHelper.getListOfClassesInPackage(packageName);
                 System.out.print("Uitype must be one of the following: ");
@@ -49,11 +49,6 @@ public class Game {
                 System.out.println();
             }
         }
-    }
-
-
-    public List<Player> getPlayers() {
-        return players;
     }
 
     public void start() {

@@ -17,7 +17,7 @@ public class RollDice extends Action {
     public void doAction() {
         HumanPlayer actor = (HumanPlayer) this.actor;
         int indexOfField = Game.game.gameBoard.getFields().indexOf(actor.getStandingOn());
-        Die.roll(Game.settings.getDiceAmount());
+        Die.roll(Game.settings.getDieAmount());
 
         for (Integer integer : Die.getLastRolls()) {
                 indexOfField += integer;
