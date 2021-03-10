@@ -15,6 +15,5 @@ swagger.json
 *.releaseBackup
 *.vscode
 target/
-/Game/src/main/resources/StandardBoard.csv
-/Game/src/main/resources/StandardBoard_advanced.xlsx
+/Game/src/main/resources/local/
 
