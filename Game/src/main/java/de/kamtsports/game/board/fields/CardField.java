@@ -11,7 +11,7 @@ public class CardField extends Field {
     private final CardType cardType;
 
     @JsonCreator
-    public CardField(@JsonProperty int id, @JsonProperty CardType cardType) {
+    public CardField(@JsonProperty("id") int id, @JsonProperty("cardType") CardType cardType) {
         super(id, Buildstatus.IMPOSSIBLE, Sellstatus.CANNOT_BE_SOLD);
         this.cardType = cardType;
     }

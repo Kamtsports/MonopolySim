@@ -12,12 +12,12 @@ public class SpecialStation extends Mortgageable {
 
 
     private final List<SpecialStation> upgradeGroup = new ArrayList<>();
-    private final List<Integer> rents;
+    private final List<Integer> rent;
 
     @JsonCreator
-    public SpecialStation(@JsonProperty int id, @JsonProperty int buyPrice,@JsonProperty List<Integer> rents ,@JsonProperty int mortgage) {
+    public SpecialStation(@JsonProperty("id") int id, @JsonProperty("buyPrice") int buyPrice,@JsonProperty("rent") List<Integer> rent ,@JsonProperty("mortage") int mortgage) {
         super(id,Buildstatus.IMPOSSIBLE, Sellstatus.UNSOLD,buyPrice,mortgage);
-        this.rents = rents;
+        this.rent = rent;
 
     }
 
@@ -32,7 +32,7 @@ public class SpecialStation extends Mortgageable {
     }
 
     public int getRent() {
-        return rents.get(getAmountOwnedInGroup());
+        return rent.get(getAmountOwnedInGroup());
     }
 
     public void addToUpgradeGroup(SpecialStation specialStation){

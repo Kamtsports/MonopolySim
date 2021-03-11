@@ -52,6 +52,7 @@ public class Game {
     }
 
     public void start() {
-
+        System.out.println("This is a Test");
+        System.out.println(gameBoard.getFields());
     }
 }

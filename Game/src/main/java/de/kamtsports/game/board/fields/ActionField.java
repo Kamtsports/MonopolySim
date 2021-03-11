@@ -12,7 +12,7 @@ public class ActionField extends Field{
     private final String action;
 
     @JsonCreator
-    public ActionField(@JsonProperty int id,@JsonProperty String action) {
+    public ActionField(@JsonProperty("id") int id,@JsonProperty("action") String action) {
         super(id, Buildstatus.IMPOSSIBLE, Sellstatus.CANNOT_BE_SOLD);
         this.action = action;
     }

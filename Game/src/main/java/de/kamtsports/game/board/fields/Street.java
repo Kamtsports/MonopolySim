@@ -2,7 +2,6 @@ package de.kamtsports.game.board.fields;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import de.kamtsports.game.Game;
 import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
 import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 import lombok.Getter;
@@ -22,11 +21,9 @@ public class Street extends Mortgageable {
     @JsonCreator
     public Street(@JsonProperty("id") int id,@JsonProperty("color") Color color,@JsonProperty("buyPrice") int buyPrice,@JsonProperty("rent") List<Integer> rent,@JsonProperty("housePrice") int housePrice,@JsonProperty("mortage") int mortage) {
         super(id, Buildstatus.FORBIDDEN, Sellstatus.UNSOLD, buyPrice, mortage);
-        System.out.println("Street Constructor");
         this.color = color;
         this.rent = rent;
         this.housePrice = housePrice;
-        Game.game.gameBoard.addToColorGroup(this.color,this);
     }
 
     public int getRent() {

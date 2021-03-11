@@ -2,7 +2,7 @@
     "field": [
         {
             "id": 0,
-            "type": "corner",
+            "type": "action",
             "color": "null",
             "buyPrice": null,
             "rent": [
@@ -15,7 +15,7 @@
             ],
             "housePrice": null,
             "mortage": null,
-            "action": "null"
+            "action": "wage"
         },
         {
             "id": 1,
@@ -89,17 +89,17 @@
             "id": 5,
             "type": "trainStation",
             "color": "null",
-            "buyPrice": null,
+            "buyPrice": 200,
             "rent": [
-                null,
-                null,
-                null,
-                null,
+                25,
+                50,
+                100,
+                200,
                 null,
                 null
             ],
             "housePrice": null,
-            "mortage": null,
+            "mortage": 100,
             "action": ""
         },
         {
@@ -172,7 +172,7 @@
         },
         {
             "id": 10,
-            "type": "corner",
+            "type": "action",
             "color": "null",
             "buyPrice": null,
             "rent": [
@@ -185,7 +185,7 @@
             ],
             "housePrice": null,
             "mortage": null,
-            "action": ""
+            "action": "none"
         },
         {
             "id": 11,
@@ -208,17 +208,17 @@
             "id": 12,
             "type": "specialStation",
             "color": "null",
-            "buyPrice": null,
+            "buyPrice": 150,
             "rent": [
-                null,
-                null,
+                4,
+                10,
                 null,
                 null,
                 null,
                 null
             ],
             "housePrice": null,
-            "mortage": null,
+            "mortage": 75,
             "action": ""
         },
         {
@@ -259,17 +259,17 @@
             "id": 15,
             "type": "trainStation",
             "color": "null",
-            "buyPrice": null,
+            "buyPrice": 200,
             "rent": [
-                null,
-                null,
-                null,
-                null,
+                25,
+                50,
+                100,
+                200,
                 null,
                 null
             ],
             "housePrice": null,
-            "mortage": null,
+            "mortage": 100,
             "action": ""
         },
         {
@@ -342,7 +342,7 @@
         },
         {
             "id": 20,
-            "type": "corner",
+            "type": "action",
             "color": "null",
             "buyPrice": null,
             "rent": [
@@ -406,7 +406,7 @@
             ],
             "housePrice": 150,
             "mortage": 110,
-            "action": ""
+            "action": "freePark"
         },
         {
             "id": 24,
@@ -429,17 +429,17 @@
             "id": 25,
             "type": "trainStation",
             "color": "null",
-            "buyPrice": null,
+            "buyPrice": 200,
             "rent": [
-                null,
-                null,
-                null,
-                null,
+                25,
+                50,
+                100,
+                200,
                 null,
                 null
             ],
             "housePrice": null,
-            "mortage": null,
+            "mortage": 100,
             "action": ""
         },
         {
@@ -480,17 +480,17 @@
             "id": 28,
             "type": "specialStation",
             "color": "null",
-            "buyPrice": null,
+            "buyPrice": 150,
             "rent": [
-                null,
-                null,
+                4,
+                10,
                 null,
                 null,
                 null,
                 null
             ],
             "housePrice": null,
-            "mortage": null,
+            "mortage": 75,
             "action": ""
         },
         {
@@ -512,7 +512,7 @@
         },
         {
             "id": 30,
-            "type": "corner",
+            "type": "action",
             "color": "null",
             "buyPrice": null,
             "rent": [
@@ -525,7 +525,7 @@
             ],
             "housePrice": null,
             "mortage": null,
-            "action": ""
+            "action": "jail"
         },
         {
             "id": 31,
@@ -599,17 +599,17 @@
             "id": 35,
             "type": "trainStation",
             "color": "null",
-            "buyPrice": null,
+            "buyPrice": 200,
             "rent": [
-                null,
-                null,
-                null,
-                null,
+                25,
+                50,
+                100,
+                200,
                 null,
                 null
             ],
             "housePrice": null,
-            "mortage": null,
+            "mortage": 100,
             "action": ""
         },
         {

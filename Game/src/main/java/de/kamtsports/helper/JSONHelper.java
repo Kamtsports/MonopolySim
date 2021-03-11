@@ -1,10 +1,11 @@
 package de.kamtsports.helper;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.KeyDeserializer;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import de.kamtsports.game.board.fields.DefaultField;
 import de.kamtsports.game.board.fields.Field;
 import de.kamtsports.game.board.gameBoards.BoardLoader;
 import org.apache.commons.io.IOUtils;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class JSONHelper {
 
@@ -22,33 +24,34 @@ public abstract class JSONHelper {
         String input;
         BoardLoader board = null;
         SimpleModule simpleModule = new SimpleModule();
-        simpleModule.addKeyDeserializer(Color.class, new ColorDeserializer());
+        simpleModule.addDeserializer(Color.class, new ColorDeserializer());
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(simpleModule);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, false);
         try (InputStream inputStream = JSONHelper.class.getClassLoader().getResourceAsStream(path)) {
-            input = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+            input = IOUtils.toString(Objects.requireNonNull(inputStream), StandardCharsets.UTF_8);
             board = objectMapper.readValue(input, BoardLoader.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return board.getField();
-        //return board.getFields().stream().map(f -> mapToActualField(f)).collect(Collectors.toList());
+        return Objects.requireNonNull(board).getField();
     }
 
-    private static Field mapToActualField(DefaultField f) {
-        switch (f.getType()) {
+    private static class ColorDeserializer extends StdDeserializer<Color> {
 
-
+        public ColorDeserializer() {
+            this(null);
         }
 
-        return null;
-    }
+        public ColorDeserializer(Class vc) {
+            super(vc);
+        }
 
-
-    private static class ColorDeserializer extends KeyDeserializer {
         @Override
-        public Object deserializeKey(String key, DeserializationContext ctxt) throws IOException {
-            return ColorHelper.getColor(key);
+        public Color deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+            String color = p.readValueAs(String.class);
+            return ColorHelper.getColor(color);
         }
     }
 }

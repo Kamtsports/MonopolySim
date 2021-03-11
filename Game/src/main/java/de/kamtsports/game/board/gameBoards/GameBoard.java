@@ -21,6 +21,13 @@ public class  GameBoard {
     public GameBoard() {
         generateColorGroups();
         fields = JSONHelper.generateFields(path);
+        for (Field field : fields){
+            if (field.getClass() == Street.class){
+                Street street = (Street) field;
+                addToColorGroup(street.getColor(),street);
+            }
+
+        }
     }
 
 
