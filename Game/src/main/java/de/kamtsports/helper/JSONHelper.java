@@ -31,7 +31,7 @@ public abstract class JSONHelper {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return board.getFields();
+        return board.getField();
         //return board.getFields().stream().map(f -> mapToActualField(f)).collect(Collectors.toList());
     }
 

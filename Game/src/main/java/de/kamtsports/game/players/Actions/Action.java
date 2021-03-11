@@ -1,6 +1,7 @@
 package de.kamtsports.game.players.Actions;
 
 import de.kamtsports.game.board.fields.Field;
+import de.kamtsports.game.players.HumanPlayer;
 import de.kamtsports.game.players.Player;
 
 
@@ -23,19 +24,16 @@ public abstract class Action {
         this(null,field);
     }
 
-    public static Action getActionFromString(String s,Player player) {
-        Action action = null;
-        switch (s){
-            case "taxes":
-                action = new PayTaxes(player,200);
-                break;
-            case "extraTaxes":
-                action = new PayTaxes(player,100);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + s);
-        }
-        return action;
+    public static Action getActionFromString(String s, HumanPlayer player) {
+        return switch (s) {
+            case "taxes" -> new PayTaxes(player, 200);
+            case "extraTaxes" -> new PayTaxes(player, 100);
+            case "wage" -> new Wage(player,"Start");
+            case "jail" -> new Jail(player);
+            case "freePark" -> new Wage(player,"freePark");
+            case "none" -> null;
+            default -> throw new IllegalStateException("Unexpected value: " + s);
+        };
     }
 
     //TODO implement doAction and invocation of it

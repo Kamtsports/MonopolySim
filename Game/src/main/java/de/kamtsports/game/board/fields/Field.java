@@ -16,7 +16,6 @@ import static com.fasterxml.jackson.annotation.JsonSubTypes.*;
         @Type(value = Mortgageable.class, name = "street"),
         @Type(value = Mortgageable.class, name = "trainStation"),
         @Type(value = Mortgageable.class, name = "specialStation"),
-        @Type(value = Corner.class, name = "corner"),
         @Type(value = ActionField.class, name = "action"),
         @Type(value = CardField.class, name = "event"),
         @Type(value = CardField.class, name = "community")

@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class BoardLoader {
 
-    public List<Field> fields = new ArrayList<>();
+    public List<Field> field = new ArrayList<>();
 
 
 
