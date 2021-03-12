@@ -11,7 +11,7 @@ import java.util.List;
 public class TrainStation extends Mortgageable {
 
 
-    private final List<TrainStation> upgradeGroup = new ArrayList<>();
+    private final List<Mortgageable> upgradeGroup = new ArrayList<>();
     private final List<Integer> rent;
 
     @JsonCreator
@@ -25,15 +25,7 @@ public class TrainStation extends Mortgageable {
 
 
 
-    private int getAmountOwnedInGroup(){
-        int amount = 0;
-        for (TrainStation trainStation : upgradeGroup){
-            if (trainStation != this && trainStation.owner == this.owner){
-                amount++;
-            }
-        }
-        return amount;
-    }
+
 
     public int getRent() {
         return rent.get(getAmountOwnedInGroup());
@@ -43,8 +35,8 @@ public class TrainStation extends Mortgageable {
         return buyPrice;
     }
 
-    public void addToUpgradeGroup(TrainStation trainStation){
-        upgradeGroup.add(trainStation);
+    @Override
+    public List<Mortgageable> getUpgradegroup() {
+        return upgradeGroup;
     }
-
 }

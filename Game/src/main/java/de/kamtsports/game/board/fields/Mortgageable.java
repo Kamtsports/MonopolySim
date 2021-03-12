@@ -5,6 +5,8 @@ import de.kamtsports.game.board.fields.fieldStatus.Buildstatus;
 import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 import lombok.Getter;
 
+import java.util.List;
+
 
 public abstract class Mortgageable extends Field {
 
@@ -21,9 +23,24 @@ public abstract class Mortgageable extends Field {
         this.buyPrice = buyPrice;
     }
 
+
+
+    public int getAmountOwnedInGroup(){
+        int amount = 0;
+        for (Mortgageable field : getUpgradegroup()){
+            if (field != this && field.owner == this.owner){
+                amount++;
+            }
+        }
+        return amount;
+    }
+
     public int getMortageFee() {
         return mortgage * Game.settings.getMortageFeePercent() / 100;
     }
+
+
+    public abstract List<Mortgageable> getUpgradegroup();
 
 }
 

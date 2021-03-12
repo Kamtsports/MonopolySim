@@ -6,10 +6,7 @@ import de.kamtsports.game.board.fields.Field;
 import de.kamtsports.game.board.fields.Mortgageable;
 import de.kamtsports.game.board.fields.fieldStatus.Sellstatus;
 import de.kamtsports.game.objects.Die;
-import de.kamtsports.game.players.Actions.Action;
-import de.kamtsports.game.players.Actions.Auction;
-import de.kamtsports.game.players.Actions.Buy;
-import de.kamtsports.game.players.Actions.GotoJail;
+import de.kamtsports.game.players.Actions.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,6 +27,8 @@ public class HumanPlayer extends Player {
     @Setter
     private boolean inJail = false;
     private final List<Action> possibleActions = new ArrayList<>();
+    @Getter
+    private final List<Mortgageable> ownedFields = new ArrayList<>();
     private int doublesInRow;
 
     public HumanPlayer(String name) {
@@ -97,6 +96,7 @@ public class HumanPlayer extends Player {
                 possibleActions.add(new Auction(field));
             }
         }
+        possibleActions.add(new Build(this));
     }
 
     @Override

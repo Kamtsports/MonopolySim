@@ -1,6 +1,7 @@
 package de.kamtsports.game.board.gameBoards;
 
 import de.kamtsports.game.board.fields.Field;
+import de.kamtsports.game.board.fields.Mortgageable;
 import de.kamtsports.game.board.fields.Street;
 import de.kamtsports.helper.ColorHelper;
 import de.kamtsports.helper.JSONHelper;
@@ -14,7 +15,7 @@ import java.util.List;
 @Getter
 public class  GameBoard {
 
-    protected final HashMap<Color, List<Street>> colorGroups = new HashMap<>();
+    protected final HashMap<Color, List<Mortgageable>> colorGroups = new HashMap<>();
     protected final List<Field> fields;
     private final String path = "StandardBoard.json";
 

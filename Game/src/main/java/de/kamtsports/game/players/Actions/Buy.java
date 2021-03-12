@@ -14,6 +14,7 @@ public class Buy extends Action {
         Mortgageable field = (Mortgageable) super.field;
         if (actor.getBalance() > field.getBuyPrice()) {
             field.setOwner(actor);
+            actor.getOwnedFields().add(field);
             actor.setBalance(actor.getBalance() - field.getBuyPrice());
         }
     }

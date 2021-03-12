@@ -21,6 +21,9 @@ public class Settings {
     private int dieAmount;
     @Getter
     private int mortageFeePercent;
+    @Getter
+    @Setter
+    private boolean allowLazyUpgrade;
 
     private Settings(VisualSolution visualSolution) {
         this.visualSolution = visualSolution;
@@ -33,6 +36,7 @@ public class Settings {
             settings.dieAmount = 2;
             settings.dieType = DieType.D6;
             settings.mortageFeePercent = 10;
+            settings.allowLazyUpgrade = false;
         }
         return settings;
     }
