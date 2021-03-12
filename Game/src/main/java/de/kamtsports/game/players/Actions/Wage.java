@@ -19,6 +19,6 @@ public class Wage extends Action{
 
     @Override
     public void doAction() {
-
+        actor.setBalance(actor.getBalance() + amount);
     }
 }

@@ -1,7 +1,7 @@
 package de.kamtsports.game.players.Actions;
 
 import de.kamtsports.game.board.fields.Field;
-import de.kamtsports.game.players.Player;
+import de.kamtsports.game.players.HumanPlayer;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class Build extends Action{
 
 
 
-    public Build(Player player) {
+    public Build(HumanPlayer player) {
         super(player);
     }
 

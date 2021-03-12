@@ -12,4 +12,6 @@ public interface VisualSolution {
     void displayPossibleActions(List<Action> possibleActions);
 
     void displayAction(Action action);
+
+    List<String> readPlayerNames();
 }

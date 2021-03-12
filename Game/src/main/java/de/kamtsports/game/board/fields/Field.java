@@ -24,7 +24,6 @@ import static com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 @Getter
 public abstract class Field {
 
-
     @Setter
     protected Buildstatus buildstatus;
     @Setter

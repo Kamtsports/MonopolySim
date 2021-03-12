@@ -3,10 +3,12 @@ package de.kamtsports.game;
 import de.kamtsports.game.Settings.SettingType;
 import de.kamtsports.game.Settings.Settings;
 import de.kamtsports.game.board.gameBoards.GameBoard;
-import de.kamtsports.game.players.Player;
+import de.kamtsports.game.players.Bank;
+import de.kamtsports.game.players.HumanPlayer;
 import de.kamtsports.helper.ClassHelper;
 import de.kamtsports.visuals.Console;
 import de.kamtsports.visuals.VisualSolution;
+import lombok.Getter;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -14,11 +16,12 @@ import java.util.List;
 
 public class Game {
 
-    @lombok.Getter
-    private final List<Player> players = new ArrayList<>();
+    @Getter
+    private final List<HumanPlayer> players = new ArrayList<>();
     public static Settings settings;
     public static Game game = null;
     public final GameBoard gameBoard;
+    public static Bank bank;
 
     private Game(Settings settings, GameBoard gameBoard) {
         Game.settings = settings;
@@ -29,6 +32,8 @@ public class Game {
     public static void generateNewGame(SettingType settingType, VisualSolution visualSolution, GameBoard gameBoard) {
         if (game == null) {
             new Game(Settings.generateSettings(settingType, visualSolution), gameBoard);
+            List<String> names = visualSolution.readPlayerNames();
+            generatePlayers(names);
         }
     }
 
@@ -51,8 +56,14 @@ public class Game {
         }
     }
 
+    private static void generatePlayers(List<String> players) {
+        bank = new Bank();
+        for (int i = 0; i < players.size() ; i++) {
+            game.players.add(new HumanPlayer("player" + i));
+        }
+    }
+
     public void start() {
-        System.out.println("This is a Test");
-        System.out.println(gameBoard.getFields());
+        players.get(0).startTurn();
     }
 }
