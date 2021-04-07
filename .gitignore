@@ -15,3 +15,5 @@ swagger.json
 *.releaseBackup
 *.vscode
 target/
+/Game/src/main/resources/local/
+

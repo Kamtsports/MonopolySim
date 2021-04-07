@@ -3,7 +3,6 @@ package de.kamtsports.helper;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import de.kamtsports.game.Main;
-import de.kamtsports.visuals.VisualSolution;
 
 import java.io.IOException;
 import java.util.List;

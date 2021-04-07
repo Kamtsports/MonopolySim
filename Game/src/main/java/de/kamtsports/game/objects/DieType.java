@@ -1,6 +1,6 @@
 package de.kamtsports.game.objects;
 
-public enum DiceType {
+public enum DieType {
     D6(6),
     D10(10),
     D12(12),
@@ -8,7 +8,7 @@ public enum DiceType {
 
     final int min;
     final int max;
-    DiceType(int max){
+    DieType(int max){
         this.min = 1;
         this.max = max;
     }

@@ -1,4 +1,4 @@
 package de.kamtsports.game.cards;
 
-public class ActionCard {
+public class EventCard {
 }
